@@ -6,15 +6,20 @@
     "rc-slider": "^8.6.4",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3",
+    "redux": "^4.0.1",
+    "redux-saga": "^0.16.2",
     "styled-components": "^4.1.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+
+		"run-server": "json-server server.json -p 3001 -w-d 500"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -14,6 +14,10 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
 
+	button {
+		cursor: pointer;
+	}
+
   body {
     -webkit-font-smoothing: antialiased !important;
     text-rendering: optimizeLegibility !important;
