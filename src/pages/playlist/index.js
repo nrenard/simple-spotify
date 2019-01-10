@@ -1,76 +1,85 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import { Container, Header, SongList } from './styles';
 
 import ClockIcon from '../../assets/images/clock.svg';
 import PlusIcon from '../../assets/images/plus.svg';
 
-const Playlist = (props) => {
-	console.log('props: ', props);
+class Playlist extends Component {
 
-	return (
-		<Container>
-			<Header>
-				<img
-					src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2017/12/Stargroves-album-cover.png?auto=format&q=60&fit=max&w=930"
-					alt="Album"
-				/>
+	componentDidMount() {
+		const { id } = this.props.match.params;
 
-				<div>
-					<span>PLAYLIST</span>
-					<h1>Rock dawdad</h1>
-					<p>12 músicas</p>
+		console.log('id: ', id);
+	}
 
-					<button>PLAY</button>
-				</div>
-			</Header>
+	render() {
+		console.log('props: ', this.props);
 
-			<SongList cellPadding={0} cellSpacing={0}>
-				<thead>
-					<th />
+		return (
+			<Container>
+				<Header>
+					<img
+						src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2017/12/Stargroves-album-cover.png?auto=format&q=60&fit=max&w=930"
+						alt="Album"
+					/>
 
-					<th>Título</th>
+					<div>
+						<span>PLAYLIST</span>
+						<h1>Rock dawdad</h1>
+						<p>12 músicas</p>
 
-					<th>Artista</th>
+						<button>PLAY</button>
+					</div>
+				</Header>
 
-					<th>Álbum</th>
-					<th>
-						<img src={ClockIcon} alt="Clock Icon"/>
-					</th>
-				</thead>
+				<SongList cellPadding={0} cellSpacing={0}>
+					<thead>
+						<th />
 
-				<tbody>
-					<tr>
-						<td>
-							<img src={PlusIcon} alt="Plus Icon"/>
-						</td>
-						<td>Papercut</td>
-						<td>Linkin Park</td>
-						<td>Bababa</td>
-						<td>3:26</td>
-					</tr>
-					<tr>
-						<td>
-							<img src={PlusIcon} alt="Plus Icon"/>
-						</td>
-						<td>Papercut</td>
-						<td>Linkin Park</td>
-						<td>Bababa</td>
-						<td>3:26</td>
-					</tr>
-					<tr>
-						<td>
-							<img src={PlusIcon} alt="Plus Icon"/>
-						</td>
-						<td>Papercut</td>
-						<td>Linkin Park</td>
-						<td>Bababa</td>
-						<td>3:26</td>
-					</tr>
-				</tbody>
-			</SongList>
-		</Container>
-	);
+						<th>Título</th>
+
+						<th>Artista</th>
+
+						<th>Álbum</th>
+						<th>
+							<img src={ClockIcon} alt="Clock Icon"/>
+						</th>
+					</thead>
+
+					<tbody>
+						<tr>
+							<td>
+								<img src={PlusIcon} alt="Plus Icon"/>
+							</td>
+							<td>Papercut</td>
+							<td>Linkin Park</td>
+							<td>Bababa</td>
+							<td>3:26</td>
+						</tr>
+						<tr>
+							<td>
+								<img src={PlusIcon} alt="Plus Icon"/>
+							</td>
+							<td>Papercut</td>
+							<td>Linkin Park</td>
+							<td>Bababa</td>
+							<td>3:26</td>
+						</tr>
+						<tr>
+							<td>
+								<img src={PlusIcon} alt="Plus Icon"/>
+							</td>
+							<td>Papercut</td>
+							<td>Linkin Park</td>
+							<td>Bababa</td>
+							<td>3:26</td>
+						</tr>
+					</tbody>
+				</SongList>
+			</Container>
+		);
+	}
 }
 
 export default Playlist;
