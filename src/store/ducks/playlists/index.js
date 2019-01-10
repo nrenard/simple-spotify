@@ -28,7 +28,7 @@ export const Creators = {
 	getPlaylistRequests: () => ({ type: Types.GET_REQUEST }),
 
 	getPlaylistRequestsSuccess: data => ({
-		type: Types.GET_REQUEST,
+		type: Types.GET_REQUEST_SUCCESS,
 		payload: { data }
 	}),
 }

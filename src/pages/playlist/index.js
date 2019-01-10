@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import { Container, Header, SongList } from './styles';
 
@@ -74,8 +73,4 @@ const Playlist = (props) => {
 	);
 }
 
-const mapStateToProps = ({ playlists }) => ({
-	playlists
-});
-
-export default connect(mapStateToProps)(Playlist);
+export default Playlist;
