@@ -13,7 +13,7 @@ class Browse extends Component {
 
 	static propTypes = {
 		getPlaylistRequests: PropTypes.func.isRequired,
-		playlist: PropTypes.shape({
+		playlists: PropTypes.shape({
 			data: PropTypes.arrayOf(PropTypes.shape({
 				id: PropTypes.number,
 				title: PropTypes.string,
