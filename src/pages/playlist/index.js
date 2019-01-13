@@ -15,11 +15,36 @@ import PlusIcon from '../../assets/images/plus.svg';
 class Playlist extends Component {
 
 	static propTypes = {
-		getPlaylistDetailsRequests: PropTypes.func,
+		match: PropTypes.shape({
+			params: PropTypes.shape({
+				id: PropTypes.string,
+			})
+		}).isRequired,
+		getPlaylistDetailsRequests: PropTypes.func.isRequired,
+		playlistDetails: PropTypes.shape({
+			data: PropTypes.shape({
+				thumbnail: PropTypes.string,
+				title: PropTypes.string,
+				description: PropTypes.string,
+				songs: PropTypes.arrayOf(PropTypes.shape({
+					id: PropTypes.number,
+					title: PropTypes.string,
+					author: PropTypes.string,
+					album: PropTypes.string,
+				}))
+			}),
+			loading: PropTypes.bool
+		}).isRequired
 	};
 
 	componentDidMount() {
 		this.loadPlaylistDetails()
+	}
+
+	componentDidUpdate(prevProps) {
+		if (prevProps.match.params.id !== this.props.match.params.id) {
+			this.loadPlaylistDetails();
+		}
 	}
 
 	loadPlaylistDetails = () => {
@@ -30,6 +55,8 @@ class Playlist extends Component {
 	renderDetails = () => {
 
 		const { thumbnail, title, songs } = this.props.playlistDetails.data;
+
+		const hasSongs = !!songs;
 
 		return (
 			<Container>
@@ -42,7 +69,7 @@ class Playlist extends Component {
 					<div>
 						<span>PLAYLIST</span>
 						<h1>{title}</h1>
-						{/* {!!songs && <p>{songLegth} músicas</p>} */}
+						{ hasSongs && <p>{songs.length} músicas</p> }
 
 						<button>PLAY</button>
 					</div>
@@ -50,28 +77,39 @@ class Playlist extends Component {
 
 				<SongList cellPadding={0} cellSpacing={0}>
 					<thead>
-						<th />
+						<tr>
+							<th />
 
-						<th>Título</th>
+							<th>Título</th>
 
-						<th>Artista</th>
+							<th>Artista</th>
 
-						<th>Álbum</th>
-						<th>
-							<img src={ClockIcon} alt="Clock Icon"/>
-						</th>
+							<th>Álbum</th>
+
+							<th>
+								<img src={ClockIcon} alt="Clock Icon"/>
+							</th>
+						</tr>
 					</thead>
 
 					<tbody>
-						<tr>
-							<td>
-								<img src={PlusIcon} alt="Plus Icon"/>
-							</td>
-							<td>Papercut</td>
-							<td>Linkin Park</td>
-							<td>Bababa</td>
-							<td>3:26</td>
-						</tr>
+						{!hasSongs ? (
+							<tr>
+								<td colSpan={5}>Nenhuma música cadastrada</td>
+							</tr>
+						) : (
+							songs.map(song => (
+								<tr>
+									<td>
+										<img src={PlusIcon} alt="Plus Icon"/>
+									</td>
+									<td>{song.title}</td>
+									<td>{song.author}</td>
+									<td>{song.album}</td>
+									<td>3:26</td>
+								</tr>
+							))
+						)}
 					</tbody>
 				</SongList>
 			</Container>

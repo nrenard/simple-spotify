@@ -15,9 +15,9 @@ import VolumeIcon from '../../assets/images/volume.svg';
 import ShuffleIcon from '../../assets/images/shuffle.svg';
 import BackwardIcon from '../../assets/images/backward.svg';
 import PlayIcon from '../../assets/images/play.svg';
-import PauseIcon from '../../assets/images/pause.svg';
 import ForwardIcon from '../../assets/images/forward.svg';
 import RepeatIcon from '../../assets/images/repeat.svg';
+// import PauseIcon from '../../assets/images/pause.svg';
 
 const Player = () => (
 	<Container>
